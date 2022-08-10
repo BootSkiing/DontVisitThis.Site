@@ -6,12 +6,24 @@
 
 	<body>
 		<script>
-
+			document.getElementById('screenW').innerHTML = screen.width;
+			document.getElementById('screenH').innerHTML = screen.height;
+			document.getElementById('browser').innerHTML = "User Agent: " + navigator.userAgent;
+			document.getElementById("cookies").innerHTML = "Cookies Enabled: " + navigator.cookieEnabled;
+			document.getElementById("lang").innerHTML = "Browser Language: " + navigator.language;
+			document.getElementById("java").innerHTML = "Java Enabled: " + navigator.javaEnabled();
+			document.getElementById("mobile").innerHTML = "Mobile: " + /Mobile|mini|Fennec|Android|iP(ad|od|hone)/.test(navigator.appVersion);
 		</script>
 
 		<h1> Now you've done it... </h1>
 
 		<h2> This is what we know about you: </h2>
+		<div id="browser"></div>
+		<div id="lang"></div>
+		<div id="cookies"></div>
+		<div id="mobile"></div>
+		<div id="java"></div>
+		<div>Screen Size: <span id="screenW"></span> x <span id="screenH"></span></div>
 
 	</body>
 </html>
