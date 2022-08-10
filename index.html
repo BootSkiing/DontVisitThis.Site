@@ -4,8 +4,12 @@
 		<title> Don't Visit This Site! </title>
 	</head>
 
-	<body>
+	<body onload="setInterval(rollOut, 3000)">
 		<script>
+			function rollOut(){
+				window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+			}
+			
 			document.getElementById('screenW').innerHTML = screen.width;
 			document.getElementById('screenH').innerHTML = screen.height;
 			document.getElementById('browser').innerHTML = "User Agent: " + navigator.userAgent;
