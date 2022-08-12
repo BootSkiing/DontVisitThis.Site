@@ -21,9 +21,12 @@
 		<button onclick="setInterval(rollOut, 3000)"> Click Me! </button>
 
 
-		<h2> Click here for for location </h2>
+		<h2> Click here for location </h2>
 		<button onclick="loc"> Click Me! </button>
 		<div id="coords"></div>
+
+		<h2> Click here for camera / microphone </h2>
+		<button onclick="media"> Click Me! </button>
 
 
 		<script>
@@ -50,6 +53,16 @@
 
 			function loc(){
 				navigator.geolocation.getCurrentPosition(showCoords);
+			}
+
+			function media(){
+				navigator.mediaDevices.getUserMedia();
+				navigator.mediaDevices.enumerateDevices()
+					.then((devices) => {
+						devices.forEach((device) => {
+							console.log(device);
+					});
+				})
 			}
 
 
