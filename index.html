@@ -4,30 +4,55 @@
 		<title> Don't Visit This Site! </title>
 	</head>
 
-	<body onload="setInterval(rollOut, 3000)">
-		<script>
-			function rollOut(){
-				window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
-			}
-			
-			document.getElementById('screenW').innerHTML = screen.width;
-			document.getElementById('screenH').innerHTML = screen.height;
-			document.getElementById('browser').innerHTML = "User Agent: " + navigator.userAgent;
-			document.getElementById("cookies").innerHTML = "Cookies Enabled: " + navigator.cookieEnabled;
-			document.getElementById("lang").innerHTML = "Browser Language: " + navigator.language;
-			document.getElementById("java").innerHTML = "Java Enabled: " + navigator.javaEnabled();
-			document.getElementById("mobile").innerHTML = "Mobile: " + /Mobile|mini|Fennec|Android|iP(ad|od|hone)/.test(navigator.appVersion);
-		</script>
-
+	<body>
 		<h1> Now you've done it... </h1>
 
-		<h2> This is what we know about you: </h2>
+		<h2> Click here for system info </h2>
+		<button onclick="sysInfo()"> Click Me! </button>
 		<div id="browser"></div>
 		<div id="lang"></div>
 		<div id="cookies"></div>
 		<div id="mobile"></div>
 		<div id="java"></div>
 		<div>Screen Size: <span id="screenW"></span> x <span id="screenH"></span></div>
+		<div id="pixel"></div>
 
+		<h2> Click here for pop-ups </h2>
+		<button onclick="setInterval(rollOut, 3000)"> Click Me! </button>
+
+
+		<h2> Click here for for location </h2>
+		<button onclick="loc"> Click Me! </button>
+		<div id="coords"></div>
+
+
+		<script>
+			function rollOut(){
+				window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ");
+			}
+			
+			function sysInfo(){
+				document.getElementById("screenW").innerHTML = screen.width;
+				document.getElementById("screenH").innerHTML = screen.height;
+				document.getElementById("pixel").innerHTML = "Pixel Depth: " + screen.pixelDepth;
+				document.getElementById("browser").innerHTML = "User Agent: " + navigator.userAgent;
+				document.getElementById("cookies").innerHTML = "Cookies Enabled: " + navigator.cookieEnabled;
+				document.getElementById("lang").innerHTML = "Browser Language: " + navigator.language;
+				document.getElementById("java").innerHTML = "Java Enabled: " + navigator.javaEnabled();
+				document.getElementById("mobile").innerHTML = "Mobile: " + /Mobile|mini|Fennec|Android|iP(ad|od|hone)/.test(navigator.appVersion);
+			}
+
+			function showCoords(position){
+				document.getElementById("coords").innerHTML =
+				"Lon: " + position.coords.longitude + "<br>" +
+				"Lat: " + position.coords.latitude;
+			}
+
+			function loc(){
+				navigator.geolocation.getCurrentPosition(showCoords);
+			}
+
+
+		</script>
 	</body>
 </html>
